@@ -8,6 +8,31 @@
 
 ---
 
+## 更新日志
+
+### 0.1.2 — 工具调用修复
+
+**这是必须升级的版本。** 之前的版本无法正常使用工具，表现为：
+模型说「我已经用相同参数调用了 5 次」、反复读同一个文件、卡住无响应。
+
+| 问题 | 原因 | 修复 |
+|---|---|---|
+| 工具调用完全失效 | `parseSse` 没有解析 `delta.tool_calls` | 解析并按 index 累积 |
+| 模型收不到工具结果 | `toUpstreamMessages` 丢弃了 `role:'tool'` 消息 | 带上 `tool_call_id` 回传 |
+| assistant 的 tool_calls 丢失 | 只保留了文本内容 | 保留 `tool_calls` 数组 |
+| finish 原因恒为 stop | 写死 `{ kind:'stop' }` | 按实际返回 `tool-calls` / `max-tokens` / `stop` |
+| 国际版无计费标注 | 只读 console catalog（该端点在国际版返回 500） | 改从 `/v3/config` 的 `credits` 读 |
+| 缺 `Free now` 标签 | 促销在 `data.modelPromotions` 顶层数组 | 新增解析 |
+| 倍率显示 `×0.79` | 我把 `x` 转成了 `×` | 保留上游原文 `x0.79` |
+
+### 0.1.1
+补全 GitHub 仓库链接等元数据。
+
+### 0.1.0
+首次发布。
+
+---
+
 ## 安装
 
 ```bash
