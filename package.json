@@ -1,0 +1,59 @@
+{
+  "name": "dsh-workbuddy-fnos-wenkbaby",
+  "version": "0.1.0",
+  "type": "module",
+  "description": "把 WorkBuddy / CodeBuddy 的模型接进 DeepSeek Harness。支持国际版与国内版双账号，动态模型目录与计费标注，凭据可本机读取或跨机导入，不修改任何系统文件。",
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "workbuddy",
+    "codebuddy",
+    "deepseek-harness",
+    "fnos"
+  ],
+  "author": {
+    "name": "温克Baby"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/Wenk12138baby/dsh-workbuddy-fnos-wenkbaby#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Wenk12138baby/dsh-workbuddy-fnos-wenkbaby.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Wenk12138baby/dsh-workbuddy-fnos-wenkbaby/issues"
+  },
+  "main": "./lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./client": "./lib/client.js",
+    "./package.json": "./package.json",
+    "./locale/*.json": "./locale/*.json"
+  },
+  "files": [
+    "lib",
+    "locale",
+    "cordis.patch.yml",
+    "README.md"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "immediately": true,
+      "inject": []
+    }
+  },
+  "peerDependencies": {
+    "@deepseek-ai/dsh-llm": "*"
+  }
+}
