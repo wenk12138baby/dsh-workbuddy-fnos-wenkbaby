@@ -2,7 +2,7 @@
   "name": "dsh-workbuddy-fnos-wenkbaby",
   "displayName": "DSH WorkBuddy (多账号版)",
   "description": "把 WorkBuddy 桌面端的模型接入 DeepSeek Harness，支持国际版与国内版，支持多账号导入导出与切换。基于 dsh-workbuddy-connect 扩展。",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "author": "温克Baby",
   "contributors": [
     "corrinehu (dsh-workbuddy-connect)"
@@ -17,7 +17,7 @@
   ],
   "type": "module",
   "engines": {
-    "node": "^22.19.0 || >=24.0.0",
+    "node": ">=20.0.0",
     "dsh": ">=0.2.1-rc.2 <0.3.0-0"
   },
   "main": "lib/index.js",
@@ -74,5 +74,16 @@
     "@deepseek-ai/dsh-settings": "0.2.1-rc.2",
     "@deepseek-ai/schemastery": "^3.18.5",
     "react": "^18.2.0"
+  },
+  "peerDependenciesMeta": {
+    "@deepseek-ai/cordis": { "optional": true },
+    "@deepseek-ai/dsh-attachment": { "optional": true },
+    "@deepseek-ai/dsh-home-paths": { "optional": true },
+    "@deepseek-ai/dsh-host-webserver": { "optional": true },
+    "@deepseek-ai/dsh-llm": { "optional": true },
+    "@deepseek-ai/dsh-llm-pi-ai": { "optional": true },
+    "@deepseek-ai/dsh-settings": { "optional": true },
+    "@deepseek-ai/schemastery": { "optional": true },
+    "react": { "optional": true }
   }
 }
