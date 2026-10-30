@@ -1,6 +1,0 @@
-{
-  "meta": {
-    "title": "WorkBuddy 接入",
-    "description": "把 WorkBuddy / CodeBuddy 的模型接进 DeepSeek Harness，支持国际版与国内版双账号。"
-  }
-}

@@ -1,8 +1,9 @@
-# dsh-workbuddy-fnos-wenkbaby bundle patch.
+# Register the WorkBuddy provider without changing the profile's current
+# default model. The plugin reuses the WorkBuddy desktop app's sign-in; no
+# separate OAuth flow is started.
 #
-# 一行 insert 挂载 Host 半身；浏览器半身由 package.json 的 dsh.client 声明，
-# 并绑定在 name 为裸包名的这一行上（子路径行不会携带半身）。
+# Based on dsh-workbuddy-connect (MIT, corrinehu), extended with a
+# multi-account pool and credential import/export.
 - insert:
-    - id: workbuddy-fnos
-      name: 'dsh-workbuddy-fnos-wenkbaby'
-      config: {}
+    - id: llm-workbuddy
+      name: dsh-workbuddy-fnos-wenkbaby

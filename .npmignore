@@ -1,0 +1,20 @@
+# npm 只发布 package.json 的 files 白名单 + 此忽略表
+# 这里再兜一层，防止任何账号/令牌文件混入 tarball
+
+_accounts.json
+workbuddy-accounts.json
+.workbuddy-auth.json
+.workbuddy-ai-auth.json
+import-real.json
+_debug-real-prompt.json
+*.log
+
+_probe/
+probe/
+node_modules/
+dist/
+*.tgz
+
+.gitignore
+.DS_Store
+Thumbs.db

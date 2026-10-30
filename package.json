@@ -1,59 +1,78 @@
 {
   "name": "dsh-workbuddy-fnos-wenkbaby",
-  "version": "0.1.2",
-  "type": "module",
-  "description": "把 WorkBuddy / CodeBuddy 的模型接进 DeepSeek Harness。支持国际版与国内版双账号，动态模型目录与计费标注，凭据可本机读取或跨机导入，不修改任何系统文件。",
-  "keywords": [
-    "dsh",
-    "dsh-plugin",
-    "workbuddy",
-    "codebuddy",
-    "deepseek-harness",
-    "fnos"
+  "displayName": "DSH WorkBuddy (多账号版)",
+  "description": "把 WorkBuddy 桌面端的模型接入 DeepSeek Harness，支持国际版与国内版，支持多账号导入导出与切换。基于 dsh-workbuddy-connect 扩展。",
+  "version": "0.2.2",
+  "author": "温克Baby",
+  "contributors": [
+    "corrinehu (dsh-workbuddy-connect)"
   ],
-  "author": {
-    "name": "温克Baby"
+  "keywords": [
+    "dsh-plugin",
+    "deepseek-harness",
+    "deepseek",
+    "workbuddy",
+    "model-provider",
+    "multi-account"
+  ],
+  "type": "module",
+  "engines": {
+    "node": "^22.19.0 || >=24.0.0",
+    "dsh": ">=0.2.1-rc.2 <0.3.0-0"
   },
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./lib/index.d.ts",
+      "default": "./lib/index.js"
+    },
+    "./client": "./lib/client.js",
+    "./cordis.patch.yml": "./cordis.patch.yml",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib",
+    "cordis.patch.yml",
+    "README.md",
+    "LICENSE",
+    "THIRD_PARTY_NOTICES.txt"
+  ],
   "license": "MIT",
-  "homepage": "https://github.com/Wenk12138baby/dsh-workbuddy-fnos-wenkbaby#readme",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Wenk12138baby/dsh-workbuddy-fnos-wenkbaby.git"
   },
-  "bugs": {
-    "url": "https://github.com/Wenk12138baby/dsh-workbuddy-fnos-wenkbaby/issues"
-  },
-  "main": "./lib/index.js",
-  "exports": {
-    ".": "./lib/index.js",
-    "./client": "./lib/client.js",
-    "./package.json": "./package.json",
-    "./locale/*.json": "./locale/*.json"
-  },
-  "files": [
-    "lib",
-    "locale",
-    "cordis.patch.yml",
-    "README.md"
-  ],
-  "engines": {
-    "node": ">=20"
-  },
-  "publishConfig": {
-    "access": "public",
-    "registry": "https://registry.npmjs.org/"
-  },
+  "homepage": "https://github.com/Wenk12138baby/dsh-workbuddy-fnos-wenkbaby#readme",
+  "bugs": "https://github.com/Wenk12138baby/dsh-workbuddy-fnos-wenkbaby/issues",
   "dsh": {
     "bundle": {
       "patch": "./cordis.patch.yml"
     },
     "client": {
-      "platform": "web",
-      "immediately": true,
-      "inject": []
+      "inject": [
+        "@deepseek-ai/dsh-api-remotes",
+        "@deepseek-ai/dsh-api-session-controller",
+        "@deepseek-ai/dsh-client-ui-renderer",
+        "@deepseek-ai/dsh-client-ui-conversation",
+        "@deepseek-ai/dsh-client-ui-model-selection",
+        "@deepseek-ai/dsh-client-locale"
+      ],
+      "platform": "web"
     }
   },
+  "dependencies": {
+    "@earendil-works/pi-ai": "1.3.0"
+  },
   "peerDependencies": {
-    "@deepseek-ai/dsh-llm": "*"
+    "@deepseek-ai/cordis": "^4.0.5",
+    "@deepseek-ai/dsh-attachment": "0.2.1-rc.2",
+    "@deepseek-ai/dsh-home-paths": "0.2.1-rc.2",
+    "@deepseek-ai/dsh-host-webserver": "0.2.1-rc.2",
+    "@deepseek-ai/dsh-llm": "0.2.1-rc.2",
+    "@deepseek-ai/dsh-llm-pi-ai": "0.2.1-rc.2",
+    "@deepseek-ai/dsh-settings": "0.2.1-rc.2",
+    "@deepseek-ai/schemastery": "^3.18.5",
+    "react": "^18.2.0"
   }
 }
